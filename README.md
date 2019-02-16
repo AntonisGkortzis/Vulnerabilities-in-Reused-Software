@@ -28,16 +28,26 @@ $ conda activate study-env
 ```sh
 $ conda install -c conda-forge notebook maven xmltodict numpy scipy pandas matplotlib seaborn
 ```
+4. Next, from a terminal, execute the 
+```sh
+$ tooling/download-vendor-tools.sh
+```
+5. Finally, open the ```tooling/script.py``` and replace the ```STUDY_HOME``` path variable with the path of your locally 
+cloned repository.
 
-
-<a id="folders"></a>
+<a id="data_collection"></a>
 ## Steps for data collection
+The steps for the data collection are described in the ```tooling/DataCollection.ipynb``` jupyter notebook. 
+More specific instruction for each substep are included before each substep.
 
-### 1. Clone projects and checkout versions
-
-For that run the following 
-
-<a id="folders"></a>
+<a id="data_analisis"></a>
 ## Steps for analysis
+The steps for the data analysis are described in the ```tooling/DataVisualization.ipynb``` jupyter notebook. 
+The execution of the steps is linear, and thus it should be executed from the top to the bottom. 
+
+An additional notebook for analysis is available in the ```tooling/ExtraAnalysis.ipynb``` jupyter notebook.
+This script provide statistical information related to the most common vulnerability types as reported by Spotbugs
+
+
 
 
