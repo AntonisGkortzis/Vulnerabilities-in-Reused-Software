@@ -35,7 +35,9 @@ class MvnArtifact:
         return hash(tuple(sorted(d.items())))
     
     def get_class_list(self, m2_home=os.path.expanduser('~/.m2')):
+        m2_home="/media/agkortzis/Data/m2"
         art_path = self.get_m2_path(m2_home)
+        logger.debug("@@-zip file={}".format(art_path))
         container = zipfile.ZipFile(art_path)
         len_preffix =  len('WEB-INF/classes/') if art_path.endswith('.war') else 0
 
@@ -47,6 +49,7 @@ class MvnArtifact:
 
     
     def get_m2_path(self, m2_home=os.path.expanduser('~/.m2')):
+        m2_home="/media/agkortzis/Data/m2"
         return os.sep.join([m2_home, 'repository', 
                         self.groupId.replace('.', os.sep), 
                         self.artifactId, 
@@ -76,6 +79,7 @@ class ArtifactTree:
             i.filter_deps(filter)
             
     def missing_m2_pkgs(self, m2_home=os.path.expanduser('~/.m2')):
+        m2_home="/media/agkortzis/Data/m2"
         return [p for p in self if not os.path.exists(p.artifact.get_m2_path(m2_home))]
         
     
@@ -112,8 +116,10 @@ def get_compiled_modules(project_trees_file):
     for t in str_trees:
         t = ArtifactTree.parse_tree_str('\n'.join(t))
         if t.artifact.type in ['jar', 'war']:
-            t.filter_deps(lambda d : d.artifact.dep_type == 'compile')
+            t.filter_deps(lambda d : d.artifact.dep_type == 'compile' and d.artifact.type in ['jar', 'war'])
+
             trees.append(t)
+
 
     return [t for t in trees if not t.missing_m2_pkgs()]
 

@@ -39,7 +39,7 @@ def retrieve_SLOC(jar_path, csv_path=None, overwrite=False):
 
     if not os.path.exists(csv_path):
         logger.error(f'SLOC file not found: {csv_path}')
-        return None
+        return {}, 0
     
     logger.info(f'Reading sloc information: {csv_path}')
     

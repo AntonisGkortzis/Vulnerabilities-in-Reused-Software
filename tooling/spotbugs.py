@@ -40,13 +40,17 @@ def analyze_project(pkgs, output_file=None, overwrite=False):
 
     
 def collect_vulnerabilities(xmlfile, class_dict):
+    logger = logging.getLogger(__name__)
     bug_count = {}
     
     for k in class_dict.keys():
         bug_count[k] = _get_empty_structure()
-    
-    with open(xmlfile) as fd:
-        doc = xmltodict.parse(fd.read())
+    try:
+        with open(xmlfile) as fd:
+            doc = xmltodict.parse(fd.read())
+    except Exception as e:
+        logger.error("Failed to parse xml :: {}".format(xmlfile))
+        raise e
     
     
     blst = doc['BugCollection'].get('BugInstance')
