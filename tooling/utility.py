@@ -31,8 +31,8 @@ class Utility(object):
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE
             )
 
-            (out, err) = [x.decode() for x in process.communicate()]
-
+            (out, err) = [x.decode() for x in process.communicate(timeout=1800)]
+        
         except Exception as e:
             print('''## ERROR while executing process {}
                 Check log file for further details'''
