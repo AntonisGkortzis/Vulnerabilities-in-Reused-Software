@@ -47,7 +47,7 @@ cloned repository.
 
 <a id="data_collection"></a>
 ## Steps for data collection
-The steps for the data collection are described in the ```tooling/DataCollection.ipynb``` and ```tooling/DataCollectionRQ3.ipynb``` jupyter notebooks. 
+The steps for the data collection are described in the ```tooling/DataCollection.ipynb```, ```tooling/DataCollectionRQ2.ipynb``` and ```tooling/DataCollectionRQ3.ipynb``` jupyter notebooks. 
 More specific instruction for each substep are included before each substep.
 
 <a id="data_analisis"></a>
@@ -55,10 +55,3 @@ More specific instruction for each substep are included before each substep.
 The steps for the data analysis are described in the ```tooling/DataVisualization.ipynb``` jupyter notebook. 
 The execution of the steps is linear, and thus it should be executed from the top to the bottom. 
 Analyzing the dataset requires a local Maven ```.m2``` directory which have all built projects and their dependencies ```jars```. 
-
-An additional notebook for analysis is available in the ```tooling/ExtraAnalysis.ipynb``` jupyter notebook.
-This script provide statistical information related to the most common vulnerability types as reported by Spotbugs
-
-
-
-
